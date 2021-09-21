@@ -11,7 +11,7 @@ return [
     ],
 
 
-    'code_societe' => 1,
+    'code_societe_oovango' => 7,
     'id_site' => "Site web Oovango",
 
 

@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Api
@@ -94,6 +95,8 @@ class Api
                 throw new SalesforceException("Api::get : code http error (" . $response->getStatusCode() . ") ou body vide : " . $ressource_path);
             }
 
+            return json_decode($response->getBody(), true);
+
         } catch (RequestException $exception) {
             /*$errors['request'] = Psr7\Message::toString($e->getRequest());
             if ($e->hasResponse()) {
@@ -102,19 +105,15 @@ class Api
 
             throw new SalesforceException("Api::get : " . $exception->getMessage());
         }
-
-        return json_decode($response->getBody(), true);
-
     }
 
     /**
      * @param string $ressource_path
      * @param array $params
-     * @return bool
-     * @throws GuzzleException
-     * @throws SalesforceException
+     * @return array
+     * @throws SalesforceException|GuzzleException
      */
-    public function post(string $ressource_path, array $params): bool
+    public function post(string $ressource_path, array $params): array
     {
         $client = new Client(['base_uri' => $this->url]);
         $headers = [
@@ -127,12 +126,12 @@ class Api
         try {
 
             $response = $client->request('POST', $ressource_path, $headers);
-            return true;
+
+            return json_decode($response->getBody(), true);
 
         } catch (RequestException $exception) {
 
             throw new SalesforceException("Api::post : " . $exception->getMessage());
-
         }
     }
 }

@@ -2,6 +2,9 @@
 namespace Citadelle\Salesforce\app\Ressources;
 
 
+use Citadelle\Salesforce\app\SalesforceException;
+use GuzzleHttp\Exception\GuzzleException;
+
 class Account extends Ressource
 {
 
@@ -18,13 +21,13 @@ class Account extends Ressource
 
     /**
      * @param $datas array
-     * @return mixed
+     * @return string AccountId
+     * @throws SalesforceException
+     * @throws GuzzleException
      */
-    public function post($datas)
+    public function post($datas) : string
     {
         $datas = $datas + [
-            "ID_SITE" => config('citadelle.salesforce.id_site'),
-            "CODE_SOCIETE" => config('citadelle.salesforce.code_societe'),
             "Nom" => "",
             "Prenom" => "",
             "Civilite" => "",
@@ -33,14 +36,18 @@ class Account extends Ressource
             "Ville" => "",
             "Adresse" => "",
             "mobile" => "",
-            "ID_CLIENT_SITE" => ""
+            "CODE_SOCIETE" => config('citadelle.salesforce.code_societe_oovango'),
+            "ID_CLIENT_SITE" => "",
+            "ID_SITE" => config('citadelle.salesforce.id_site'),
         ];
 
         //dd($datas);
 
-        return $this->api->post('apexrest/AccountManager/v1.0/', [
+        $response = $this->api->post('apexrest/AccountManager/v1.0/', [
             'acct' => $datas
         ]);
+
+        return $response['AccountId'];
     }
 
 }
