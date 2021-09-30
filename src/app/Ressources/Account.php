@@ -43,7 +43,7 @@ class Account extends Ressource
 
         //dd($datas);
 
-        $response = $this->api->post('apexrest/AccountManager/v1.0/', [
+        $response = $this->api->post('apexrest/AccountManager/v1.0', [
             'acct' => $datas
         ]);
 

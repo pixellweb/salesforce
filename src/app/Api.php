@@ -19,7 +19,7 @@ class Api
     /**
      * @var string
      */
-    protected $url = 'https://citadelle--webservice.my.salesforce.com/services/';
+    protected $url = null;
 
     /**
      * @var string
@@ -33,6 +33,7 @@ class Api
     public function __construct()
     {
         $this->token = $this->geAccessToken();
+        $this->url = config('citadelle.salesforce.api.url');
     }
 
     protected function geAccessToken()

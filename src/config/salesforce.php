@@ -8,6 +8,7 @@ return [
         "client_secret" => env('SALESFORCE_CLIENT_SECRET'),
         "username" => env('SALESFORCE_USERNAME'),
         "password" => env('SALESFORCE_PASSWORD'),
+        "url" => env('SALESFORCE_URL'),
     ],
 
 
