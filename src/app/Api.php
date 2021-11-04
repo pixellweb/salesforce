@@ -132,7 +132,7 @@ class Api
 
         } catch (RequestException $exception) {
 
-            throw new SalesforceException("Api::post : " . $exception->getMessage());
+            throw new SalesforceException("Api::post : " . $exception->getMessage() . ' '.print_r($params,true));
         }
     }
 }
