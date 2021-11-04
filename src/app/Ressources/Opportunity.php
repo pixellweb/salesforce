@@ -24,7 +24,7 @@ class Opportunity extends Ressource
     {
         $datas = [
             "ID_SALESFORCE" => $client_reference_salesforce,
-            "StageName" => $is_devis ? "Quotation" : 'Closed Won',
+            "StageName" => $is_devis ? "Quotation" : 'Réservation',
             "VIN_VEHICULE" => $vin.'_'.str_pad($code_societe_source, 3, '0', STR_PAD_LEFT),
             "TRANSACTION_PAYBOX" => $transaction_reference,
             "MONTANT_ACOMPTE" => $acompte,
