@@ -11,8 +11,6 @@ return [
         "url" => env('SALESFORCE_URL'),
     ],
 
-
-    'code_societe_oovango' => 7,
     'id_site' => "Site web Oovango",
 
 

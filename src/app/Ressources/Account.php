@@ -36,7 +36,7 @@ class Account extends Ressource
             "Ville" => "",
             "Adresse" => "",
             "mobile" => "",
-            "CODE_SOCIETE" => config('citadelle.salesforce.code_societe_oovango'),
+            "CODE_SOCIETE" => config('citadelle.salesforce.code_societe_client'),
             "ID_CLIENT_SITE" => "",
             "ID_SITE" => config('citadelle.salesforce.id_site'),
         ];
