@@ -13,7 +13,7 @@ return [
 
     'code_societe_client' => 7,
     'id_site' => "Site web Oovango",
-
+    'opportunity_type' => null,
 
 
 ];
