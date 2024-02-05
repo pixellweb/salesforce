@@ -31,7 +31,7 @@ class Opportunity extends Ressource
         ];
 
         if (config('citadelle.salesforce.opportunity_type')) {
-            $datas['Opportunity Record Type'] = config('citadelle.salesforce.opportunity_type');
+            $datas['RecordTypeId'] = config('citadelle.salesforce.opportunity_type');
         }
 
         $response = $this->api->post('apexrest/OpportunityManager/v1.0', [
